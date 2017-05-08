@@ -45,7 +45,7 @@ hs_err_pid*
 
 # Maven
 
-/target/
+target
 
 # Gradle:
 .idea/**/gradle.xml
