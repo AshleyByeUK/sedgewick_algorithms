@@ -5,6 +5,18 @@ import java.util.Scanner;
 
 /**
  * Created by ash on 08/05/2017.
+ * ~ NlogN, thus linearithmic, which is good.
+ *
+ * Uses an entire second array, so quite space intensive, especially as N grows. There
+ * are implementations of the algorithm that can be used which use less space (see
+ * Ex 2.2.10 and 2.2.11).
+ *
+ * Performance can be further improved by 10-15% by setting a cutoff for sub-arrays
+ * length 15 or less, and using insertion sort on these (see Ex 2.2.23). Testing whether
+ * the array is already in order can reduce the running time to be linear for such
+ * arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
+ * skipping the call to merge() if it is. All the recursive calls are still performed
+ * (see Ex 2.2.8).
  */
 public class MergeSort {
 
@@ -38,22 +50,38 @@ public class MergeSort {
     }
   }
 
+  // The following single sort() method uses a pairwise, bottom-up approach.
   public static void sort(Comparable[] array) {
+    // Do lgN passes of pairwise merges.
     temp = new Comparable[array.length];  // Initialise just once, hence not in merge().
-    sort(array, 0, array.length - 1);
-  }
 
-  private static void sort(Comparable[] array, int low, int high) {
-    // Sort array[low...high].
-    if (high <= low) {
-      return;
-    } else {
-      int mid = low + ((high - low) / 2); // Low not always zero, e.g. 10 + ((20 - 10) / 2).
-      sort(array, low, mid);          // Sort left half.
-      sort(array, mid + 1, high);     // Sort right half.
-      merge(array, low, mid, high);   // Merge results.
+    for (int size = 1; size < array.length; size *= 2) {
+      for (int low = 0; low < (array.length - size); low += (2 * size)) {
+        merge(array,
+            low,
+            low + size - 1,
+            Math.min((low + (2 * size) - 1), (array.length - 1)));
+      }
     }
   }
+
+  // The following two sort() methods utilise a recursive, top-down approach.
+//  public static void sort(Comparable[] array) {
+//    temp = new Comparable[array.length];  // Initialise just once, hence not in merge().
+//    sort(array, 0, array.length - 1);
+//  }
+//
+//  private static void sort(Comparable[] array, int low, int high) {
+//    // Sort array[low...high].
+//    if (high <= low) {
+//      return;
+//    } else {
+//      int mid = low + ((high - low) / 2); // Low not always zero, e.g. 10 + ((20 - 10) / 2).
+//      sort(array, low, mid);          // Sort left half.
+//      sort(array, mid + 1, high);     // Sort right half.
+//      merge(array, low, mid, high);   // Merge results.
+//    }
+//  }
 
   private static boolean less(Comparable v, Comparable w) {
     return v.compareTo(w) < 0;
