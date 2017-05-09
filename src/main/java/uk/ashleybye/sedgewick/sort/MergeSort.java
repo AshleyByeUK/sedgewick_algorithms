@@ -17,6 +17,9 @@ import java.util.Scanner;
  * arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
  * skipping the call to merge() if it is. All the recursive calls are still performed
  * (see Ex 2.2.8).
+ *
+ * When using linked lists, the bottom up algorithm should be preferred, because
+ * it can sort the list in place (i.e. without creating any new list nodes).
  */
 public class MergeSort {
 
