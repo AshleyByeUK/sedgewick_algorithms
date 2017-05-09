@@ -19,14 +19,24 @@ import java.util.Scanner;
  * Testing whether the array is already in order can reduce the running time to be linear
  * for such arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
  * skipping the call to merge() if it is. All the recursive calls are still performed
- * (see Ex 2.2.8) - hence only applies to top-down algorithm.
+ * (see Ex 2.2.8).
  *
  * When using linked lists, the bottom up algorithm should be preferred, because
  * it can sort the list in place (i.e. without creating any new list nodes).
  */
 public class MergeSort {
 
-  public static void merge(Comparable[] array, int low, int mid, int high, Comparable[] temp) {
+  public static void merge(Comparable[] array,
+      int low,
+      int mid,
+      int high,
+      Comparable[] temp) {
+
+    // Skip already sorted sub arrays.
+    if (array[mid].compareTo(array[mid + 1]) <= 0) {
+      return;
+    }
+
     // Merge array[low...mid] with array[mid + 1...high].
     int i = low;
     int j = mid + 1;
