@@ -9,14 +9,14 @@ import java.util.Scanner;
  *
  * Uses an entire second array, so quite space intensive, especially as N grows. There
  * are implementations of the algorithm that can be used which use less space (see
- * Ex 2.2.10 and 2.2.11).
- *
- * Performance can be further improved by 10-15% by setting a cutoff for sub-arrays
- * length 15 or less, and using insertion sort on these (see Ex 2.2.23). Testing whether
- * the array is already in order can reduce the running time to be linear for such
- * arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
+ * Ex 2.2.10 and 2.2.11). Performance can be further improved by 10-15% by setting a
+ * cutoff for sub-arrays length 15 or less, and using insertion sort on these
+ * (see Ex 2.2.23).
+ * 
+ * Testing whether the array is already in order can reduce the running time to be linear
+ * for such arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
  * skipping the call to merge() if it is. All the recursive calls are still performed
- * (see Ex 2.2.8).
+ * (see Ex 2.2.8) - hence only applies to top-down algorithm.
  *
  * When using linked lists, the bottom up algorithm should be preferred, because
  * it can sort the list in place (i.e. without creating any new list nodes).
