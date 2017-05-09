@@ -8,12 +8,14 @@ import org.junit.Test;
  */
 public class QuickSortTest {
 
-  private String[] sorted = {"C", "I", "K", "O", "Q", "R", "S", "T", "U"};
+  private String[] sorted = {"A", "C", "E", "E", "I", "K", "L", "M", "O",
+      "P", "Q", "R", "S", "T", "U", "X"};
 
   @Test
   public void sort() {
     // Arrange
-    String[] unsorted = {"Q", "U", "I", "C", "K", "S", "O", "R", "T"};
+    String[] unsorted = {"Q", "U", "I", "C", "K", "S", "O", "R", "T",
+        "E", "X", "A", "M", "P", "L", "E"};
 
     // Act
     QuickSort.sort(unsorted);
