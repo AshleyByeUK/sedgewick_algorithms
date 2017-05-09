@@ -7,6 +7,10 @@ import java.util.Scanner;
 /**
  * Created by ash on 09/05/2017.
  * From Sedgewick, pages 289 & 291.
+ *
+ * ~ NlogN. Algorithm 2.5 (page 289) without improvements, will have a running
+ * time within a constant factor of 1.39NlogN. This is also true of mergesort,
+ * although quicksort is typically faster due to it doing much less data movement.
  */
 public class QuickSort {
 
@@ -19,16 +23,30 @@ public class QuickSort {
   }
 
   public static void sort(Comparable[] array) {
-    shuffle(array);   // Eliminate dependence on input.
+    shuffle(array);   // Eliminate dependence on input. An alternative approach is
+                      // to randomly choose an element to be the partitioning value
+                      // in partition().
     sort(array, 0, array.length - 1);
   }
 
+  /*
+   * Recursively call sort after partitioning the array. After each pass, one
+   * extra value is in its final position within the array. This by calling
+   * partition() and then sort on increasingly smaller sub-arrays.
+   */
   private static void sort(Comparable[] array, int low, int high) {
-    // Sort array[] into increasing order.
-    if (high <= low) {
+    // For small sub-arrays, use insertion sort. The constant value cutoff is
+    // system dependent, but values between 5 and 15 should work well in most
+    // cases.
+    if (high <= low + 15) {
+//    if (high <= low) {
+      // Add 1 to high, since InsertionSort parameter is exclusive, yet we have
+      // already subtracted 1 from array.length in the public sort() method.
+      InsertionSort.sort(array, low, high + 1);
       return;
     }
 
+    // Partition and sort array[] into increasing order.
     int j = partition(array, low, high);
     sort(array, low, j - 1);    // Sort left part.
     sort(array, j + 1, high);   // Sort right part.
@@ -55,6 +73,18 @@ public class QuickSort {
     return random.nextInt(n);
   }
 
+  /*
+   * Here we partition the array by arbitrarily choosing array[low] to be the
+   * partitioning item. Next, scan from the left of the array until an entry
+   * that is greater than or equal to the partitioning value is found. Repeat
+   * this process for the right hand side, until an entry less than or equal to
+   * the partitioning value is found. By definition, the values for i and j
+   * are on the wrong side of the partitioning value, so swap them around. This
+   * is repeated until all entries to the left of the partitioning value are not
+   * greater than it, and those to the right are not less than it, i.e. when
+   * the i and j indices cross. Finally, swap the partitioning value with the
+   * highest entry of the left hand sub-array and return its position index.
+   */
   private static int partition(Comparable[] array, int low, int high) {
     // Partition into array[low...i], array[i], array[i + 1...high].
     int i = low;        // Left scan index.
@@ -64,11 +94,13 @@ public class QuickSort {
     while (true) {
       // Scan right, scan left, check for scan complete, and exchange.
       while (less(array[++i], v)) {
+        // Can be eliminated, see exercise 2.3.17.
         if (i == high) {
           break;
         }
       }
       while (less(v, array[--j])) {
+        // Technically redundant, since v is item one and j will never move past it.
         if (j == low) {
           break;
         }

@@ -31,6 +31,16 @@ public class InsertionSort {
     }
   }
 
+  public static void sort(Comparable[] array, int low, int high) {
+    // Sort array[] into increasing order.
+    for (int i = low; i < high; i++) {
+      // Insert array[i] among array[i-1], array[i-2], array[i-3]...
+      for (int j = i; j > low && less(array[j], array[j - 1]); j--) {
+        exchange(array, j, j - 1);
+      }
+    }
+  }
+
   private static boolean less(Comparable v, Comparable w) {
     return v.compareTo(w) < 0;
   }
