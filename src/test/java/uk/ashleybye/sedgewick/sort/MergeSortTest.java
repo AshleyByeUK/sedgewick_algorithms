@@ -14,9 +14,10 @@ public class MergeSortTest {
   public void merge() {
     // Arrange
     String[] unmerged = {"E", "E", "G", "M", "R", "O", "R", "S", "T"};
+    String[] temp = new String[unmerged.length];
 
     // Act
-    MergeSort.merge(unmerged, 0, 4, 8);
+    MergeSort.merge(unmerged, 0, 4, 8, temp);
 
     // Assert
     Assert.assertArrayEquals("Expected merge does not equal actual merge",

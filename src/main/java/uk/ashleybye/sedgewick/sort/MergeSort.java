@@ -7,12 +7,15 @@ import java.util.Scanner;
  * Created by ash on 08/05/2017.
  * ~ NlogN, thus linearithmic, which is good.
  *
- * Uses an entire second array, so quite space intensive, especially as N grows. There
+ * Uses an entire second array, so quite space intensive, especially as N grows. This
+ * temp[] should be passed as a parameter to merge() rather than be a static field,
+ * especially if this is a library function. If not, there is a risk multiple clients
+ * will try to access the array at the same time, which would not end well! There
  * are implementations of the algorithm that can be used which use less space (see
  * Ex 2.2.10 and 2.2.11). Performance can be further improved by 10-15% by setting a
  * cutoff for sub-arrays length 15 or less, and using insertion sort on these
  * (see Ex 2.2.23).
- * 
+ *
  * Testing whether the array is already in order can reduce the running time to be linear
  * for such arrays. This is achieved by testing whether array[mid] <= array[mid + 1] and
  * skipping the call to merge() if it is. All the recursive calls are still performed
@@ -23,9 +26,7 @@ import java.util.Scanner;
  */
 public class MergeSort {
 
-  private static Comparable[] temp;  // Temporary array for merges.
-
-  public static void merge(Comparable[] array, int low, int mid, int high) {
+  public static void merge(Comparable[] array, int low, int mid, int high, Comparable[] temp) {
     // Merge array[low...mid] with array[mid + 1...high].
     int i = low;
     int j = mid + 1;
@@ -56,14 +57,15 @@ public class MergeSort {
   // The following single sort() method uses a pairwise, bottom-up approach.
   public static void sort(Comparable[] array) {
     // Do lgN passes of pairwise merges.
-    temp = new Comparable[array.length];  // Initialise just once, hence not in merge().
+    Comparable[] temp = new Comparable[array.length];  // Initialise just once, hence not in merge().
 
     for (int size = 1; size < array.length; size *= 2) {
       for (int low = 0; low < (array.length - size); low += (2 * size)) {
         merge(array,
             low,
             low + size - 1,
-            Math.min((low + (2 * size) - 1), (array.length - 1)));
+            Math.min((low + (2 * size) - 1), (array.length - 1)),
+            temp);
       }
     }
   }
