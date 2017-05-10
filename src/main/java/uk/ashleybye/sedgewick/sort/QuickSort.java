@@ -95,12 +95,14 @@ public class QuickSort {
       // Scan right, scan left, check for scan complete, and exchange.
       while (less(array[++i], v)) {
         // Can be eliminated, see exercise 2.3.17.
+        // See also 2.3.18 and 2.3.19.
         if (i == high) {
           break;
         }
       }
       while (less(v, array[--j])) {
         // Technically redundant, since v is item one and j will never move past it.
+        // See exercises 2.3.18 and 2.3.19.
         if (j == low) {
           break;
         }
