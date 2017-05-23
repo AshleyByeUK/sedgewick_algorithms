@@ -12,7 +12,7 @@ public class ConnectedComponentsTest {
   public static void main(String[] args) {
 
     if (args.length != 1) {
-      System.out.println("Usage: java DfsPathsTest sourcefile");
+      System.out.println("Usage: java ConnectedComponentsTest sourcefile");
     }
 
     try {
