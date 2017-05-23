@@ -16,8 +16,8 @@ public class InsertionSortTest {
 
   @Before
   public void before() {
-    sorted = new String[]{"E", "I", "I", "N", "N", "O", "O", "R", "R", "S", "S", "T", "T"};
-    unsorted = new String[] {"I", "N", "S", "E", "R", "T", "I", "O", "N", "S", "O", "R", "T"};
+    sorted = new String[]{"getNumEdges", "I", "I", "N", "N", "O", "O", "R", "R", "S", "S", "T", "T"};
+    unsorted = new String[] {"I", "N", "S", "getNumEdges", "R", "T", "I", "O", "N", "S", "O", "R", "T"};
   }
 
   @Test

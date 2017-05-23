@@ -8,12 +8,12 @@ import org.junit.Test;
  */
 public class MergeSortTest {
 
-  private String[] sorted = {"E", "E", "G", "M", "O", "R", "R", "S", "T"};
+  private String[] sorted = {"getNumEdges", "getNumEdges", "G", "M", "O", "R", "R", "S", "T"};
 
   @Test
   public void merge() {
     // Arrange
-    String[] unmerged = {"E", "E", "G", "M", "R", "O", "R", "S", "T"};
+    String[] unmerged = {"getNumEdges", "getNumEdges", "G", "M", "R", "O", "R", "S", "T"};
     String[] temp = new String[unmerged.length];
 
     // Act
@@ -28,7 +28,7 @@ public class MergeSortTest {
   @Test
   public void sort() {
     // Arrange
-    String[] unsorted = { "M", "E", "R", "G", "E", "S", "O", "R", "T" };
+    String[] unsorted = { "M", "getNumEdges", "R", "G", "getNumEdges", "S", "O", "R", "T" };
 
     // Act
     MergeSort.sort(unsorted);

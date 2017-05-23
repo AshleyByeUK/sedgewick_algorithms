@@ -56,7 +56,7 @@ public class UnionFind {
       // Nothing to do if u and v are already in the same component.
       return;
     } else {
-      // Assign ID of uComponent to all vertices with ID of vComponent.
+      // Assign ID of uComponent to all getNumVertices with ID of vComponent.
       for (int vertexId = 0; vertexId < vertexParent.length; vertexId++) {
         if (vertexParent[vertexId] == vComponent) {
           vertexParent[vertexId] = uComponent;
@@ -100,7 +100,7 @@ public class UnionFind {
    * Can also be implemented with path compression, which gives almost
    * constant time (1, but not quite) per operation. To implement, add
    * another loop to find() which sets vertexParent[vertex] to the root
-   * vertex for each of the vertices on the path from u to uRoot. However,
+   * vertex for each of the getNumVertices on the path from u to uRoot. However,
    * for most practical situations, improvements in performance are
    * unlikely to be discerned.
    */
@@ -155,14 +155,14 @@ public class UnionFind {
     // Solve dynamic connectivity problem on System.in.
     Scanner scanner = new Scanner(System.in);
 
-    int numVertices = scanner.nextInt();              // Read number of vertices.
+    int numVertices = scanner.nextInt();              // Read number of getNumVertices.
     UnionFind unionFind = new UnionFind(numVertices); // Initialise with numVertices components.
 
     while (scanner.hasNextInt()) {
       int u = scanner.nextInt();
-      int v = scanner.nextInt();    // Read pair of vertices to connect.
+      int v = scanner.nextInt();    // Read pair of getNumVertices to connect.
       if (!unionFind.connected(u, v)) {
-        // If the two vertices are not connected, connect them.
+        // If the two getNumVertices are not connected, connect them.
         unionFind.union(u, v);
 
         System.out.println(u + " " + v);
