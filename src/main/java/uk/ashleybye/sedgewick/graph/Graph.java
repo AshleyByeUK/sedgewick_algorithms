@@ -44,7 +44,7 @@ public class Graph {
   /**
    * Create a V-vertex undirected graph with zero edges.
    *
-   * @param numVertices The number of numVertices.
+   * @param numVertices The number of vertices.
    */
   public Graph(int numVertices) {
     this.numVertices = numVertices;
