@@ -66,7 +66,8 @@ public class Graph {
    * 1273
    * 244 246
    * 239 240
-   * 238 245 ...
+   * 238 245
+   * ...
    *
    * @param scanner The {@code Scanner} containing the source data.
    */
