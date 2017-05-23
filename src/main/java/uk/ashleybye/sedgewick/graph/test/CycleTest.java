@@ -11,7 +11,7 @@ public class CycleTest {
   public static void main(String[] args) {
 
     if (args.length != 1) {
-      System.out.println("Usage: java Cycle sourcefile");
+      System.out.println("Usage: java CycleTest sourcefile");
     }
 
     try {
