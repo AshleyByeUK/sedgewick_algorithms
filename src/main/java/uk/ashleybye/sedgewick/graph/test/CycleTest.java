@@ -8,6 +8,7 @@ import uk.ashleybye.sedgewick.graph.Cycle;
 import uk.ashleybye.sedgewick.graph.Graph;
 
 public class CycleTest {
+
   public static void main(String[] args) {
 
     if (args.length != 1) {

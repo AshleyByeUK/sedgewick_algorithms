@@ -1,5 +1,8 @@
 package uk.ashleybye.sedgewick.graph;
 
+/**
+ * Checks for cycles in the specified graph.
+ */
 public class Cycle {
 
   private boolean[] markedVertices;
