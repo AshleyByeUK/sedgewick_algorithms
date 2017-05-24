@@ -28,5 +28,5 @@ Algorithm implementation examples from the book, Algorithms 4th Edition.
 | Depth-First Vertex Orders | [DepthFirstOrder](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/DepthFirstOrder.java) | 580 | |
 | Precedence-Constrained Scheduling | [TopologicalSort](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/TopologicalSort.java) | 581 | |
 | Topological Sort | [TopologicalSort](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/TopologicalSort.java) | 581 | |
-| Strong Connectivity | [StronglyConnectedComponents](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/StronglyConnectedComponents.java) | 587 | Kosaraju's Algorithm |
+| Strong Connectivity | [StronglyConnectedComponents](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/StronglyConnectedComponents.java) | 587 | [Kosaraju's Algorithm](https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm) |
 | All-Pairs Reachability | [TransitiveClosure](https://github.com/AshleyByeUK/sedgewick_algorithms/blob/master/src/main/java/uk/ashleybye/sedgewick/graph/TransitiveClosure.java) | 593 | |
