@@ -17,11 +17,12 @@ import java.util.PriorityQueue;
  *
  * Effectively starts with a graph with all edges coloured grey. As edges are added to the minimum
  * spanning tree, they are coloured black. This creates two cut sets, one black, the other grey.
- * Crossing edges connect the black set too the grey set and are eligible for inclusion in the
- * minimum spanning tree. Edges become ineligible when the addition of another edge to the minimum
- * spanning tree results in the previously eligible edge connecting to a vertex that is now included
- * in the black set. That is, when an edge no longer crosses from the black set to the grey set due
- * to the addition of a new vertex to the black set, that edge becomes ineligible for inclusion.
+ * Crossing edges connect vertices in the black set to vertices in the grey set and are eligible for
+ * inclusion in the minimum spanning tree. Edges become ineligible when the addition of another edge
+ * to the black set results in the previously eligible edge in the black connecting to a vertex in
+ * the grey set, but which is now included in the black set. That is, when an edge no longer crosses
+ * from the black set to the grey set due to the addition of a new vertex to the black set, that
+ * edge becomes ineligible for inclusion.
  */
 public class PrimMinimumSpanningTreeLazy {
 
