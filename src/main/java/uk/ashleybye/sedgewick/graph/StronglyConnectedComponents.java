@@ -2,9 +2,9 @@ package uk.ashleybye.sedgewick.graph;
 
 /**
  * This is an implementation of Kosaraju's algorithm for computing strongly connected components in
- * a digraph. To do so, it does a depth-first search in the reverse digraph, which produces a vertex
- * order; the reverse post-order vertex ordering of the search in the reverse digraph is then used
- * in a depth-first search of the given digraph.
+ * a digraph. To do so, it performs a depth-first search in the reverse digraph, which produces a
+ * vertex order; the reverse post-order vertex ordering of the search in the reverse digraph is then
+ * used in a depth-first search of the given digraph.
  *
  * Once the vertex order has been computed, it takes the first vertex and marks all vertices
  * connected to it. Next, it locates the next unmarked vertex and marks all vertices connected to
@@ -26,8 +26,12 @@ public class StronglyConnectedComponents {
   public StronglyConnectedComponents(Digraph digraph) {
     markedVertices = new boolean[digraph.getNumVertices()];
     componentIdentifiers = new int[digraph.getNumVertices()];
+
+    // Conduct depth first search in the reverse digraph.
     DepthFirstOrder depthFirstOrder = new DepthFirstOrder(digraph.reverse());
 
+    // Conduct a depth first search of the original digraph in reverse post-order of the reverse
+    // digraph - Kosaraju's algorithm (Sedgewick, p587).
     for (int vertex : depthFirstOrder.reversePostOrder()) {
       if (!markedVertices[vertex]) {
         directedDepthFirstSearch(digraph, vertex);
