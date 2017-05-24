@@ -1,5 +1,9 @@
 package uk.ashleybye.sedgewick.graph;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import uk.ashleybye.sedgewick.collections.Bag;
 
@@ -56,7 +60,7 @@ public class Graph {
   }
 
   /**
-   * Create an undirected graph by reading a file from a Scanner.
+   * Create an undirected graph by reading input from a file.
    *
    * It expects an input format consisting of 2E + 2 integer values each separated by a newline.
    * First, the number of vertices, next the number of edges, followed by pairs of vertex numbers
@@ -69,16 +73,27 @@ public class Graph {
    * 238 245
    * ...
    *
-   * @param scanner The {@code Scanner} containing the source data.
+   * @param fileName The path to the file containing the source data.
+   *
+   * @throws IOException If the specified file cannot be loaded.
    */
-  public Graph(Scanner scanner) {
-    this(scanner.nextInt());
-    this.numEdges = scanner.nextInt();
+  public Graph(String fileName) throws IOException {
+    Path filePath = Paths.get(fileName);
+    try (Scanner scanner = new Scanner(Files.newInputStream(filePath))) {
+      this.numVertices = scanner.nextInt();
+      this.numEdges = scanner.nextInt();
+      adjacencyLists = (Bag<Integer>[]) new Bag[numVertices];
+      for (int v = 0; v < numVertices; v++) {
+        adjacencyLists[v] = new Bag<>();
+      }
 
-    for (int e = 0; e < numEdges; e++) {
-      int v = scanner.nextInt();
-      int w = scanner.nextInt();
-      addEdge(v, w);
+      for (int e = 0; e < numEdges; e++) {
+        int v = scanner.nextInt();
+        int w = scanner.nextInt();
+        this.addEdge(v, w);
+      }
+    } catch (IOException exception) {
+      throw new IOException("Could not open file: " + fileName);
     }
   }
 

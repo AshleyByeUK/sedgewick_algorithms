@@ -1,33 +1,25 @@
 package uk.ashleybye.sedgewick.graph.test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
 import uk.ashleybye.sedgewick.graph.Bipartite;
 import uk.ashleybye.sedgewick.graph.Graph;
 
 public class BipartiteTest {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
 
     if (args.length != 1) {
-      System.out.println("Usage: java BipartiteTest sourcefile");
+      System.out.println("Usage: java BipartiteTest sourceFile");
       System.exit(0);
     }
 
-    try {
-      Scanner scanner = new Scanner(new FileInputStream(new File(args[0])));
-      Graph graph = new Graph(scanner);
-      Bipartite search = new Bipartite(graph);
+    Graph graph = new Graph(args[0]);
+    Bipartite search = new Bipartite(graph);
 
-      System.out.print("Graph is ");
-      if (!search.isBipartite()) {
-        System.out.print("NOT ");
-      }
-      System.out.println("bipartite.");
-    } catch (FileNotFoundException exception) {
-      System.out.println("File '" + args[0] + "' not found.");
+    System.out.print("Graph is ");
+    if (!search.isBipartite()) {
+      System.out.print("NOT ");
     }
+    System.out.println("bipartite.");
   }
 }
