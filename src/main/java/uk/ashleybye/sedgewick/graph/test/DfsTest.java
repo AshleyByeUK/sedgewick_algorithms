@@ -12,6 +12,7 @@ public class DfsTest {
   public static void main(String[] args) {
     if (args.length != 2) {
       System.out.println("Usage: java DfsTest sourcefile numberEdges");
+      System.exit(0);
     }
 
     try {

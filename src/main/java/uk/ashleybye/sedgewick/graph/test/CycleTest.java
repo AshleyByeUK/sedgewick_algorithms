@@ -13,6 +13,7 @@ public class CycleTest {
 
     if (args.length != 1) {
       System.out.println("Usage: java CycleTest sourcefile");
+      System.exit(0);
     }
 
     try {

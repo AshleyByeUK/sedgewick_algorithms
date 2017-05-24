@@ -13,6 +13,7 @@ public class ConnectedComponentsTest {
 
     if (args.length != 1) {
       System.out.println("Usage: java ConnectedComponentsTest sourcefile");
+      System.exit(0);
     }
 
     try {

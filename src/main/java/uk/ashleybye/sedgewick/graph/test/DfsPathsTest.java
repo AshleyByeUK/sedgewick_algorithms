@@ -13,6 +13,7 @@ public class DfsPathsTest {
 
     if (args.length != 2) {
       System.out.println("Usage: java DfsPathsTest sourcefile numberEdges");
+      System.exit(0);
     }
 
     try {
