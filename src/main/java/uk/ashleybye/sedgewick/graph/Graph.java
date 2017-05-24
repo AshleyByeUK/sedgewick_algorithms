@@ -91,6 +91,9 @@ public class Graph {
         int v = scanner.nextInt();
         int w = scanner.nextInt();
         this.addEdge(v, w);
+
+        // numEdges is incremented in addEdge(), so decrement to keep E constant.
+        numEdges--;
       }
     } catch (IOException exception) {
       throw new IOException("Could not open file: " + fileName);
@@ -124,6 +127,7 @@ public class Graph {
   public void addEdge(int u, int v) {
     adjacencyLists[u].add(v);
     adjacencyLists[v].add(u);
+    numEdges++;
   }
 
   /**
