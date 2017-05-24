@@ -1,6 +1,6 @@
 # sedgewick_algorithms
 
-Algorithm implementation examples from the book, Algorithms 4th Edition.
+Algorithm implementation examples from the book, Algorithms 4th Edition. See the [booksite](http://algs4.cs.princeton.edu/home/) for more information.
 
 ## Graph Algorithms
 
