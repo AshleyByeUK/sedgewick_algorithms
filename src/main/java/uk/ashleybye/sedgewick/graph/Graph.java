@@ -54,8 +54,8 @@ public class Graph {
     this.numVertices = numVertices;
     this.numEdges = 0;
     adjacencyLists = (Bag<Integer>[]) new Bag[numVertices];
-    for (int v = 0; v < numVertices; v++) {
-      adjacencyLists[v] = new Bag<>();
+    for (int vertex = 0; vertex < numVertices; vertex++) {
+      adjacencyLists[vertex] = new Bag<>();
     }
   }
 
@@ -83,14 +83,14 @@ public class Graph {
       this.numVertices = scanner.nextInt();
       this.numEdges = scanner.nextInt();
       adjacencyLists = (Bag<Integer>[]) new Bag[numVertices];
-      for (int v = 0; v < numVertices; v++) {
-        adjacencyLists[v] = new Bag<>();
+      for (int vertex = 0; vertex < numVertices; vertex++) {
+        adjacencyLists[vertex] = new Bag<>();
       }
 
       for (int e = 0; e < numEdges; e++) {
+        int u = scanner.nextInt();
         int v = scanner.nextInt();
-        int w = scanner.nextInt();
-        this.addEdge(v, w);
+        this.addEdge(u, v);
 
         // numEdges is incremented in addEdge(), so decrement to keep E constant.
         numEdges--;
