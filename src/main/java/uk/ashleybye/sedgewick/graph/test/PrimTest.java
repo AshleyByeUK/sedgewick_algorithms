@@ -9,7 +9,7 @@ public class PrimTest {
 
   public static void main(String[] args) throws IOException {
     if (args.length != 1) {
-      System.out.println("Usage: java LazyPrimTest sourceFile");
+      System.out.println("Usage: java PrimTest sourceFile");
       System.exit(0);
     }
 
