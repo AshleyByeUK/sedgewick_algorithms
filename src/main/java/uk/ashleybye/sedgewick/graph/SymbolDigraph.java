@@ -12,6 +12,7 @@ public class SymbolDigraph {
   /**
    * Index of symbol to underlying digraph index.
    */
+  //TODO(Ash): This should be a HashMap, HashTable is depricated.
   private Hashtable<String, Integer> symbolTable;
 
   /**
