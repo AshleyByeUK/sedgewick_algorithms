@@ -2,6 +2,8 @@
 
 Algorithm implementation examples from the book, Algorithms 4th Edition. See the [booksite](http://algs4.cs.princeton.edu/home/) for more information.
 
+Data also originates from the [booksite](http://algs4.cs.princeton.edu/home/).
+
 ## Graph Algorithms
 
 ### Undirected Graphs
