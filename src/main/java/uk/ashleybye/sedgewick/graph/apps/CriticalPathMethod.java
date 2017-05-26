@@ -1,6 +1,9 @@
-package uk.ashleybye.sedgewick.graph;
+package uk.ashleybye.sedgewick.graph.apps;
 
 import java.util.Scanner;
+import uk.ashleybye.sedgewick.graph.AcyclicLongestPath;
+import uk.ashleybye.sedgewick.graph.DirectedEdge;
+import uk.ashleybye.sedgewick.graph.EdgeWeightedDigraph;
 
 public class CriticalPathMethod {
 
