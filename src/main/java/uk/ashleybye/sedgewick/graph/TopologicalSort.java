@@ -11,7 +11,8 @@ public class TopologicalSort {
   private Iterable<Integer> topologicalOrder;
 
   /**
-   * Constructs an instance of TopologicalSort and sorts the given directed graph into topological order.
+   * Constructs an instance of TopologicalSort and sorts the given directed graph into topological
+   * order.
    *
    * @param graph The directed graph.
    */
@@ -24,12 +25,13 @@ public class TopologicalSort {
   }
 
   /**
-   * Constructs an instance of TopologicalSort and sorts the given edge-weighted directed graph into topological order.
+   * Constructs an instance of TopologicalSort and sorts the given edge-weighted directed graph into
+   * topological order.
    *
    * @param graph The edge-weighted directed graph.
    */
   public TopologicalSort(EdgeWeightedDigraph graph) {
-    DirectedCycle cycleFinder = new DirectedCycle(graph);
+    EdgeWeightedDirectedCycle cycleFinder = new EdgeWeightedDirectedCycle(graph);
     if (!cycleFinder.getCycle().isPresent()) {
       DepthFirstOrder depthFirstOrder = new DepthFirstOrder(graph);
       topologicalOrder = depthFirstOrder.reversePostOrder();

@@ -18,28 +18,12 @@ public class DirectedCycle {
   private boolean[] onStack;
 
   /**
-   * Construct an instance of DirectedCycle and compute whether the directed graph contains any cycles.
+   * Construct an instance of DirectedCycle and compute whether the directed graph contains any
+   * cycles.
    *
    * @param graph The directed graph.
    */
   public DirectedCycle(Digraph graph) {
-    markedVertices = new boolean[graph.getNumVertices()];
-    edgeTo = new int[graph.getNumVertices()];
-    onStack = new boolean[graph.getNumVertices()];
-
-    for (int vertex = 0; vertex < graph.getNumVertices(); vertex++) {
-      if (!markedVertices[vertex]) {
-        depthFirstSearch(graph, vertex);
-      }
-    }
-  }
-
-  /**
-   * Construct an instance of DirectedCycle and compute whether the edge-weighted directed graph contains any cycles.
-   *
-   * @param graph The edge-weighted directed graph.
-   */
-  public DirectedCycle(EdgeWeightedDigraph graph) {
     markedVertices = new boolean[graph.getNumVertices()];
     edgeTo = new int[graph.getNumVertices()];
     onStack = new boolean[graph.getNumVertices()];
@@ -76,38 +60,6 @@ public class DirectedCycle {
           cycle.push(vertex);
         }
         cycle.push(tail);
-        cycle.push(head);
-      }
-    }
-
-    onStack[head] = false;
-  }
-
-  /**
-   * Conducted a depth first search of edge-weighted directed paths. Maintains an array of vertices for which the
-   * recursive search has not yet completed. If the vertex being searched has a path to a vertex
-   * which has yet to complete its recursive search, a cycle exists. This cycle is stored for later
-   * retrieval.
-   *
-   * @param graph The directed graph.
-   * @param head The vertex to search from.
-   */
-  private void depthFirstSearch(EdgeWeightedDigraph graph, int head) {
-    markedVertices[head] = true;
-    onStack[head] = true;
-
-    for (DirectedEdge tail : graph.adjacentTo(head)) {
-      if (this.hasCycle()) {
-        return;
-      } else if (!markedVertices[tail.to()]) {
-        edgeTo[tail.to()] = head;
-        depthFirstSearch(graph, tail.to());
-      } else if (onStack[tail.to()]) {
-        cycle = new Stack<>();
-        for (int vertex = head; vertex != tail.to(); vertex = edgeTo[vertex]) {
-          cycle.push(vertex);
-        }
-        cycle.push(tail.to());
         cycle.push(head);
       }
     }
