@@ -24,36 +24,77 @@ public class DepthFirstOrder {
    * Constructs an instance of DepthFirstOrder and computes the pre-, post- and reverse post-order
    * orderings for the given directed acyclic graph.
    *
-   * @param digraph The directed acyclic graph.
+   * @param graph The directed acyclic graph.
    */
-  public DepthFirstOrder(Digraph digraph) {
+  public DepthFirstOrder(Digraph graph) {
     preOrder = new Queue<>();
     postOrder = new Queue<>();
     reversePostOrder = new Stack<>();
 
-    markedVertices = new boolean[digraph.getNumVertices()];
+    markedVertices = new boolean[graph.getNumVertices()];
 
-    for (int vertex = 0; vertex < digraph.getNumVertices(); vertex++) {
+    for (int vertex = 0; vertex < graph.getNumVertices(); vertex++) {
       if (!markedVertices[vertex]) {
-        directedDepthFirstSearch(digraph, vertex);
+        depthFirstSearch(graph, vertex);
       }
     }
   }
 
   /**
-   * Conducts a depth first search of the digraph and constructs the pre-, post-, and reverse
-   * post-order orderings.
+   * Constructs an instance of DepthFirstOrder and computes the pre-, post- and reverse post-order
+   * orderings for the given edge-weighted directed acyclic graph.
    *
-   * @param digraph The digraph to search.
+   * @param graph The edge-weighted directed graph.
+   */
+  public DepthFirstOrder(EdgeWeightedDigraph graph) {
+    preOrder = new Queue<>();
+    postOrder = new Queue<>();
+    reversePostOrder = new Stack<>();
+
+    markedVertices = new boolean[graph.getNumVertices()];
+
+    for (int vertex = 0; vertex < graph.getNumVertices(); vertex++) {
+      if (!markedVertices[vertex]) {
+        depthFirstSearch(graph, vertex);
+      }
+    }
+  }
+
+  /**
+   * Conducts a depth first search of the directed acyclic graph and constructs the pre-, post-, and
+   * reverse post-order orderings.
+   *
+   * @param graph The directed acyclic graph to search.
    * @param head The vertex to search from.
    */
-  private void directedDepthFirstSearch(Digraph digraph, int head) {
+  private void depthFirstSearch(Digraph graph, int head) {
     preOrder.enqueue(head);
 
     markedVertices[head] = true;
-    for (int tail : digraph.adjacentTo(head)) {
+    for (int tail : graph.adjacentTo(head)) {
       if (!markedVertices[tail]) {
-        directedDepthFirstSearch(digraph, tail);
+        depthFirstSearch(graph, tail);
+      }
+    }
+
+    postOrder.enqueue(head);
+    reversePostOrder.push(head);
+  }
+
+  /**
+   * Conducts a depth first search of the edge-weighted directed acyclic graph and constructs the
+   * pre-, post-, and reverse post-order orderings.
+   *
+   * @param graph The edge-weighted directed acyclic graph to search.
+   * @param head The vertex to search from.
+   */
+  private void depthFirstSearch(EdgeWeightedDigraph graph, int head) {
+    preOrder.enqueue(head);
+
+    markedVertices[head] = true;
+    for (DirectedEdge tail : graph.adjacentTo(head)) {
+      if (!markedVertices[tail.to()]) {
+        depthFirstSearch(graph, tail.to());
       }
     }
 
