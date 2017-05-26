@@ -9,7 +9,7 @@ public class DijkstraShortestPathTest {
 
   public static void main(String[] args) throws IOException {
     if (args.length != 2) {
-      System.out.println("Usage: java DijkstraShortestPathTest");
+      System.out.println("Usage: java DijkstraShortestPathTest sourceFile sourceVertex");
       System.exit(0);
     }
 
